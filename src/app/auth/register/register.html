@@ -1,0 +1,57 @@
+<div class="auth-container">
+  <div class="auth-box">
+    <h2>Create Account ✨</h2>
+    <p class="subtitle">Join us and get started</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Full Name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Email Address"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          formControlName="mobile"
+          placeholder="Mobile Number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+
+      <p class="footer-text">
+        Already have an account?
+        <a routerLink="/login">Login here</a>
+      </p>
+    </form>
+  </div>
+</div>
