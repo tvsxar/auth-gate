@@ -72,36 +72,53 @@ input {
 }
 
 .footer-text {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    color: #4b5563;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #4b5563;
 
-    a {
-        color: #6366f1;
-        font-weight: 600;
-        text-decoration: none;
+  a {
+    color: #6366f1;
+    font-weight: 600;
+    text-decoration: none;
 
-        &:hover {
-            text-decoration: underline;
-        }
+    &:hover {
+      text-decoration: underline;
     }
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0)
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .error {
-    color: #e63946;
-    font-size: 13px;
-    margin-top: 4px;
-    display: block;
-    text-align: left;
+  color: #e63946;
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+  text-align: left;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+
+  &.success {
+    background: #ecfdf5;
+    color: #065f46;
+  }
+
+  &.error {
+    background: #fee2e2;
+    color: #991b1b;
+  }
 }

@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../service/auth-service';
 import { Component } from '@angular/core';
 import {
   ReactiveFormsModule,
@@ -18,7 +19,14 @@ import { RouterLink } from '@angular/router';
 export class Register {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  loading = false;
+  successMessage = '';
+  errorMessage = '';
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+  ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -35,8 +43,23 @@ export class Register {
   }
 
   onSubmit() {
-    if (!this.registerForm.invalid) {
-      console.log(this.registerForm.value);
-    }
+    if (this.registerForm.invalid || this.loading) return;
+
+    this.loading = true;
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    this.authService.register(this.registerForm.value).subscribe({
+      next: (res) => {
+        this.successMessage = 'Account created successfully 🎉';
+        this.registerForm.reset();
+        this.loading = false;
+      },
+      error: (err) => {
+        this.errorMessage =
+          err?.error?.message || 'Something went wrong. Try again.';
+        this.loading = false;
+      },
+    });
   }
 }
