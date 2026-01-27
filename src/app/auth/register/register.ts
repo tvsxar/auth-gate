@@ -7,7 +7,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +26,7 @@ export class Register {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private router: Router,
   ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -54,6 +55,8 @@ export class Register {
         this.successMessage = 'Account created successfully 🎉';
         this.registerForm.reset();
         this.loading = false;
+
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         this.errorMessage =

@@ -6,7 +6,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../service/auth-service';
 
 @Component({
@@ -24,6 +24,7 @@ export class Login {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,7 +41,7 @@ export class Login {
     this.authService.login(this.loginForm.value).subscribe({
       next: () => {
         this.loading = false;
-        console.log('Logged in')
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         this.errorMessage = err?.error?.message || 'Invalid email or password';
