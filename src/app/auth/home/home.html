@@ -1,0 +1,10 @@
+<div class="auth-container">
+  <div class="auth-box">
+    <h2>Welcome, {{ user?.name }} 👋</h2>
+
+    <p><strong>Email:</strong> {{ user?.email }}</p>
+    <p><strong>Mobile:</strong> {{ user?.mobile }}</p>
+
+    <button (click)="logout()" class="btn-primary">Logout</button>
+  </div>
+</div>
