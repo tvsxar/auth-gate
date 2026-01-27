@@ -19,4 +19,12 @@ export class AuthService {
       withCredentials: true,
     });
   }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/me`, { withCredentials: true });
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(`${this.baseUrl}/logout`, {}, { withCredentials: true });
+  }
 }
